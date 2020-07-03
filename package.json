@@ -2,6 +2,6 @@
   "name": "Hello world",
   "version": "1.0.0",
   "dependencies": {
-
+    "chalk": "^4.1.0"
   }
 }
