@@ -1,7 +1,23 @@
 {
-  "name": "Hello world",
+  "name": "notes-app",
   "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
   "dependencies": {
     "chalk": "^4.1.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrcharles/LearnNode-NotesApp.git"
+  },
+  "author": "JR Charles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrcharles/LearnNode-NotesApp/issues"
+  },
+  "homepage": "https://github.com/jrcharles/LearnNode-NotesApp#readme"
 }
