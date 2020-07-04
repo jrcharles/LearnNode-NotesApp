@@ -1,10 +1,6 @@
-const chalk = require('chalk');
+const chalk = require('chalk')
+const yargs = require('yargs')
+const utils = require('./utils.js')
 const getNotes = require('./notes.js')
-const validator = require('validator')
 
-const notes = getNotes()
-console.log(notes)
-
-console.log(chalk.green.inverse.bold("Success!"))
-
-console.log(validator.isEmail('jrcharles@mac.com'))
+yargs.parse()
