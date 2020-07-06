@@ -1,5 +1,7 @@
 const yargs = require('yargs')
-const { string } = require('yargs')
+const {
+    string
+} = require('yargs')
 const chalk = require('chalk')
 const notes = require('./notes.js')
 
@@ -39,9 +41,9 @@ yargs.command({
             demandOption: true,
             type: 'string'
         }
-    }, 
+    },
     handler: function (argv) {
-        console.log(chalk.red('Removing note...'))
+        console.log(chalk.red('Removing note... ', argv.title))
         notes.removeNote(argv.title)
     }
 })
