@@ -19,6 +19,7 @@ const saveNotes = function (notes) {
 }
 
 // function to add note
+<<<<<<< HEAD
 const addNote = function (title, body) {
   // load notes
   const notes = loadNotes() <<
@@ -32,9 +33,14 @@ const addNote = function (title, body) {
       }) >>>
       >>>
       > parent of 556 be92...Lecture 23 - Refactoring with Arrow functions
+=======
+const addNote = (title, body) => {
+  const notes = loadNotes()
+  const duplicateNotes = notes.filter((note) => note.title === title)
+>>>>>>> parent of 09b4899... Lecture 24 - Read Notes
 
   // check if title exists
-  if (!duplicateNote) {
+  if (duplicateNotes.length === 0) {
     notes.push({
       title: title,
       body: body
@@ -72,13 +78,9 @@ const removeNote = function (title) {
   saveNotes(notes)
 }
 
-const listNotes = () => {
-  console.log(chalk.bold('|--- Your Notes ---|'))
-  const notes = loadNotes()
 
-  notes.forEach(note => console.log(chalk.blue.bold(note.title)))
-}
 
+<<<<<<< HEAD
 const readNote = (title) => {
     const notes = loadNotes()
     const displayNote = notes.find((note) => note.title === title)
@@ -106,3 +108,17 @@ const readNote = (title) => {
       removeNote: removeNote,
       readNote: readNote
     }
+=======
+const listNotes = () => {
+  console.log(chalk.bold('Your Notes'))
+  const notes = loadNotes()
+
+  notes.forEach(note => console.log(chalk.blue.bold(note.title)))
+}
+
+module.exports = {
+  listNotes: listNotes,
+  addNote: addNote,
+  removeNote: removeNote
+}
+>>>>>>> parent of 09b4899... Lecture 24 - Read Notes
