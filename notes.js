@@ -54,12 +54,15 @@ const removeNote = (title) => {
 
 
 
-const getNotes = () => {
-  return 'Your Notes...'
+const listNotes = () => {
+  console.log(chalk.bold('Your Notes'))
+  const notes = loadNotes()
+
+  notes.forEach(note => console.log(chalk.blue.bold(note.title)))
 }
 
 module.exports = {
-  getNotes: getNotes,
+  listNotes: listNotes,
   addNote: addNote,
   removeNote: removeNote
 }
