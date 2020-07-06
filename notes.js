@@ -2,7 +2,7 @@ const fs = require('fs')
 const chalk = require('chalk')
 
 // function to load notes
-const loadNotes = function () {
+const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync('notes.json')
     const dataJSON = dataBuffer.toString()
@@ -13,18 +13,15 @@ const loadNotes = function () {
 }
 
 // function to save notes
-const saveNotes = function (notes) {
+const saveNotes = (notes) => {
   const dataJSON = JSON.stringify(notes)
   fs.writeFileSync('notes.json', dataJSON)
 }
 
 // function to add note
-const addNote = function (title, body) {
-  // load notes
+const addNote = (title, body) => {
   const notes = loadNotes()
-  const duplicateNotes = notes.filter(function (note) {
-    return note.title === title
-  })
+  const duplicateNotes = notes.filter((note) => note.title === title)
 
   // check if title exists
   if (duplicateNotes.length === 0) {
@@ -36,38 +33,28 @@ const addNote = function (title, body) {
     console.log('note title taken!')
   }
 
-  // Lastly, save the notes
   saveNotes(notes)
 }
 
 //function to remove notes
-const removeNote = function (title) {
-  // load notes
+const removeNote = (title) => {
   const notes = loadNotes()
 
-  var position = -1
+  const updatedNotes = notes.filter((note) => note.title != title)
 
-  // Check to find 
-  for (const note of notes) {
-    if (note.title === title) {
-      position = notes.indexOf(note)
-      console.log(chalk.green('Note successfully removed.'))
-      notes.splice(position, 1)
-
-    }
-  }
-
-  if (position === -1) {
+  //Check if the note was actually removed or exists
+  if (updatedNotes.length < notes.length) {
+    console.log(chalk.green('Note was successfully removed.'))
+  } else {
     console.log(chalk.red('Note does not exist.'))
   }
 
-  // Lastly, save the notes
-  saveNotes(notes)
+  saveNotes(updatedNotes)
 }
 
 
 
-const getNotes = function () {
+const getNotes = () => {
   return 'Your Notes...'
 }
 

@@ -24,7 +24,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function (argv) {
+    handler: (argv) => {
         console.log(chalk.green('Adding note...'))
         notes.addNote(argv.title, argv.body)
     }
@@ -42,7 +42,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: function (argv) {
+    handler: (argv) => {
         console.log(chalk.red('Removing note... ', argv.title))
         notes.removeNote(argv.title)
     }
