@@ -21,10 +21,10 @@ const saveNotes = (notes) => {
 // function to add note
 const addNote = (title, body) => {
   const notes = loadNotes()
-  const duplicateNotes = notes.filter((note) => note.title === title)
+  const duplicateNote = notes.find((note) => note.title === title)
 
   // check if title exists
-  if (duplicateNotes.length === 0) {
+  if (!duplicateNote) {
     notes.push({
       title: title,
       body: body
@@ -52,17 +52,28 @@ const removeNote = (title) => {
   saveNotes(updatedNotes)
 }
 
-
-
 const listNotes = () => {
-  console.log(chalk.bold('Your Notes'))
+  console.log(chalk.bold('|--- Your Notes ---|'))
   const notes = loadNotes()
 
   notes.forEach(note => console.log(chalk.blue.bold(note.title)))
 }
 
+const readNote = (title) => {
+  const notes = loadNotes()
+  const displayNote = notes.find((note) => note.title === title)
+
+  if (displayNote) {
+    console.log(chalk.green(displayNote.title))
+    console.log(chalk.blue(displayNote.body))
+  } else {
+    console.log(chalk.red('There is not note with that title.'))
+  }
+}
+
 module.exports = {
   listNotes: listNotes,
   addNote: addNote,
-  removeNote: removeNote
+  removeNote: removeNote,
+  readNote: readNote
 }
